@@ -12,8 +12,6 @@ import javax.persistence.Table;
 public class Article {
 
 	@Id
-//	@GeneratedValue(generator = "uuid")
-//	@GenericGenerator(name = "uuid", strategy = "uuid2")
 	@Column(name = "CODART", columnDefinition = "LONGBLOB")
 	private String codArt;
 

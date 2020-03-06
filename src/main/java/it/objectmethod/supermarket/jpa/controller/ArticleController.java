@@ -28,7 +28,7 @@ public class ArticleController {
 	}
 
 	@GetMapping("/by-code")
-	public Article formView(@RequestParam(value = "getCod", required = false) String getCod) {
+	public Article getArticleByCode(@RequestParam(value = "getCod", required = false) String getCod) {
 		Article article = null;
 
 		if (getCod != null) {
@@ -39,7 +39,7 @@ public class ArticleController {
 	}
 
 	@PutMapping("/save")
-	public Article articleIns(@RequestBody Article art) {
+	public Article articleSave(@RequestBody Article art) {
 
 		if (artRepo.findById(art.getCodArt()) != null) {
 

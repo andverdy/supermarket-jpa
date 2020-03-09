@@ -5,8 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-
-@ComponentScan("module-service")
+@ComponentScan("it.objectmethod.supermarket.jpa")
 public class SupermarketJpaApplication {
 
 	public static void main(String[] args) {

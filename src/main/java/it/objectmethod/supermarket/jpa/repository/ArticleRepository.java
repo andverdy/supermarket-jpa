@@ -8,8 +8,4 @@ import it.objectmethod.supermarket.jpa.entity.Article;
 @Component
 public interface ArticleRepository extends JpaRepository<Article, String> {
 
-
-	
-	
-	
 }

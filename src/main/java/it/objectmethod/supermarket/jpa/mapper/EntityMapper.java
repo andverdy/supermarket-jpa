@@ -1,4 +1,4 @@
-package it.objectmethod.supermarket.jpa.service.mapper;
+package it.objectmethod.supermarket.jpa.mapper;
 
 import java.util.List;
 

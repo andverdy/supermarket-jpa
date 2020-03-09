@@ -7,9 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import it.objectmethod.supermarket.jpa.entity.Iva;
+import it.objectmethod.supermarket.jpa.mapper.IvaMapper;
 import it.objectmethod.supermarket.jpa.repository.IvaRepository;
 import it.objectmethod.supermarket.jpa.service.dto.IvaDTO;
-import it.objectmethod.supermarket.jpa.service.mapper.IvaMapper;
 
 @Service
 public class IvaService {

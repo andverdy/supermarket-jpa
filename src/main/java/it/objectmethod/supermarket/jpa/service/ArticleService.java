@@ -4,9 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import it.objectmethod.supermarket.jpa.entity.Article;
-import it.objectmethod.supermarket.jpa.mapper.ArticleMapper;
 import it.objectmethod.supermarket.jpa.repository.ArticleRepository;
 import it.objectmethod.supermarket.jpa.service.dto.ArticleDTO;
+import it.objectmethod.supermarket.jpa.service.mapper.ArticleMapper;
 
 @Component
 public class ArticleService {

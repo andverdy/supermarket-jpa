@@ -1,25 +1,12 @@
 package it.objectmethod.supermarket.jpa.service.dto;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-
 public class ArticleDTO {
 
-	@Id
-	@Column(name = "CODART", columnDefinition = "LONGBLOB")
 	private String codArt;
-
-	@Column(name = "DESCRIZIONE")
 	private String descrizione;
-
-	@Column(name = "PZCART")
 	private Integer pzCart;
-	
-	@Column(name = "IDIVA")
-	private Integer idIva;
-	
-	@Column(name = "IDFAMASS")
 	private Integer idFamAss;
+	private Integer idIva;
 
 	public String getCodArt() {
 		return codArt;
@@ -45,6 +32,14 @@ public class ArticleDTO {
 		this.pzCart = pzCart;
 	}
 
+	public Integer getIdFamAss() {
+		return idFamAss;
+	}
+
+	public void setIdFamAss(Integer idFamAss) {
+		this.idFamAss = idFamAss;
+	}
+
 	public Integer getIdIva() {
 		return idIva;
 	}
@@ -53,16 +48,4 @@ public class ArticleDTO {
 		this.idIva = idIva;
 	}
 
-	public Integer getIdFamAss() {
-		return idFamAss;
-	}
-
-	public void setIdFamAss(Integer idFamAss) {
-		this.idFamAss = idFamAss;
-	}
-	
-	
-	
-	
-	
 }

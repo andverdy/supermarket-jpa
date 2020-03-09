@@ -6,6 +6,7 @@ import java.util.Map;
 import it.objectmethod.supermarket.jpa.entity.ArticleCart;
 
 
+
 public class Cart {
 
 	private Map<String, ArticleCart> articoli = new HashMap<String, ArticleCart>();

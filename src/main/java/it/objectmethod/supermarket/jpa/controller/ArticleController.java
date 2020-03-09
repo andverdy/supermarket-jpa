@@ -1,6 +1,5 @@
 package it.objectmethod.supermarket.jpa.controller;
 
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import it.objectmethod.supermarket.jpa.entity.Article;
 import it.objectmethod.supermarket.jpa.repository.ArticleRepository;
+import it.objectmethod.supermarket.jpa.service.ArticleService;
+import it.objectmethod.supermarket.jpa.service.dto.ArticleDTO;
 
 @RestController
 @RequestMapping("/api/article")
@@ -19,35 +20,39 @@ public class ArticleController {
 
 	@Autowired
 	ArticleRepository artRepo;
-
-	@GetMapping("/list")
-	public List<Article> getArticles() {
-		List<Article> articles = artRepo.findAll();
-
-		return articles;
-	}
+	@Autowired
+	ArticleService articleService;
+	
+//
+//	@GetMapping("/list")
+//	public List<ArticleDTO> getArticles() {
+//		List<ArticleDTO> articles = articleService.findAll();
+//
+//		return articles;
+//	}
 
 	@GetMapping("/by-code")
-	public Article getArticleByCode(@RequestParam(value = "getCod", required = false) String getCod) {
-		Article article = null;
+	public ArticleDTO getArticleByCode(@RequestParam(value = "getCod", required = false) String getCod) {
+		ArticleDTO articleDto = null;
 
 		if (getCod != null) {
-			article = artRepo.findById(getCod).get();
+			articleDto = articleService.findById(getCod);
 		}
 
-		return article;
+		return articleDto;
 	}
 
 	@PutMapping("/save")
-	public Article articleSave(@RequestBody Article art) {
+	public ArticleDTO articleSave(@RequestBody Article art) {
+		ArticleDTO articleDTO = null;
 
-		if (artRepo.findById(art.getCodArt()) != null) {
+		if (articleService.findById(art.getCodArt()) != null) {
 
-			artRepo.save(art);
+			articleDTO = articleService.save(art);
 
 		}
 
-		return art;
+		return articleDTO;
 	}
 
 }

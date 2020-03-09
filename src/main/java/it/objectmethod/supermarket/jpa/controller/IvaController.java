@@ -7,21 +7,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import it.objectmethod.supermarket.jpa.entity.Iva;
-import it.objectmethod.supermarket.jpa.repository.IvaRepository;
+import it.objectmethod.supermarket.jpa.service.IvaService;
+import it.objectmethod.supermarket.jpa.service.dto.IvaDTO;
 
 @RestController
 @RequestMapping("/api/iva")
 public class IvaController {
 
 	@Autowired
-	IvaRepository ivaRepo;
+	IvaService ivaService;
 
 	@GetMapping("/list")
-	public List<Iva> getIva() {
-		List<Iva> ivaList = ivaRepo.findAll();
+	public List<IvaDTO> getIva() {
 
-		return ivaList;
+		return ivaService.findAll();
 	}
 
 }

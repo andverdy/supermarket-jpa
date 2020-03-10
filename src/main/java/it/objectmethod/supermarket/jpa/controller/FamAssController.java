@@ -7,21 +7,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import it.objectmethod.supermarket.jpa.entity.FamAss;
-import it.objectmethod.supermarket.jpa.repository.FamAssRepository;
+import it.objectmethod.supermarket.jpa.service.FamAssService;
+import it.objectmethod.supermarket.jpa.service.dto.FamAssDTO;
 
 @RestController
 @RequestMapping("/api/fam")
 public class FamAssController {
 
 	@Autowired
-	FamAssRepository famRepo;
+	FamAssService famAssService;
 
 	@GetMapping("/list")
-	public List<FamAss> getFam() {
-		List<FamAss> famList = famRepo.findAll();
+	public List<FamAssDTO> getFam() {
 
-		return famList;
+		return famAssService.findAll();
 	}
 
 }

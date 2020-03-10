@@ -1,4 +1,3 @@
-
 package it.objectmethod.supermarket.jpa.service.mapper;
 
 import org.mapstruct.Mapper;

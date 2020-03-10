@@ -1,5 +1,7 @@
 package it.objectmethod.supermarket.jpa.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -19,13 +21,12 @@ public class ArticleController {
 	@Autowired
 	ArticleService articleService;
 
-//
-//	@GetMapping("/list")
-//	public List<ArticleDTO> getArticles() {
-//		List<ArticleDTO> articles = articleService.findAll();
-//
-//		return articles;
-//	}
+	@GetMapping("/list")
+	public List<ArticleDTO> getArticles() {
+		List<ArticleDTO> articles = articleService.findAll();
+
+		return articles;
+	}
 
 	@GetMapping("/by-code")
 	public ArticleDTO getArticleByCode(@RequestParam(value = "getCod", required = false) String getCod) {

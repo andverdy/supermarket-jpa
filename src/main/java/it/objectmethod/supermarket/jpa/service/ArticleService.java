@@ -1,5 +1,8 @@
 package it.objectmethod.supermarket.jpa.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -17,13 +20,16 @@ public class ArticleService {
 	@Autowired
 	private ArticleMapper articleMapper;
 
-//	public List<ArticleDTO> findAll() {
-//		List<Article> articles = artRepo.findAll();
-//
-//		List<ArticleDTO> articlesDto = articleMapper.toDto(articles);
-//
-//		return articlesDto;
-//	}
+	public List<ArticleDTO> findAll() {
+		List<Article> articlesList = artRepo.findAll();
+		List<ArticleDTO> articlesListDto = new ArrayList<ArticleDTO>();
+		for (Article e : articlesList) {
+			ArticleDTO articleDto = articleMapper.toDto(e);
+			articlesListDto.add(articleDto);
+		}
+
+		return articlesListDto;
+	}
 
 	public ArticleDTO findById(String id) {
 		return articleMapper.toDto(artRepo.findById(id).get());

@@ -13,9 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import it.objectmethod.supermarket.jpa.controller.beans.Cart;
 import it.objectmethod.supermarket.jpa.controller.beans.CartMap;
-import it.objectmethod.supermarket.jpa.entity.Article;
-import it.objectmethod.supermarket.jpa.entity.ArticleCart;
-import it.objectmethod.supermarket.jpa.repository.ArticleRepository;
+import it.objectmethod.supermarket.jpa.service.CartService;
+import it.objectmethod.supermarket.jpa.service.dto.ArticleCartDTO;
 
 @RestController
 @RequestMapping("/api/cart")
@@ -24,8 +23,9 @@ public class CartController {
 
 	@Autowired
 	private CartMap carts;
+
 	@Autowired
-	private ArticleRepository artRepo;
+	CartService cartService;
 
 	@PostMapping("/insert")
 	public Integer addToCart(@RequestParam("codArt") String codArt,
@@ -48,15 +48,16 @@ public class CartController {
 			cart = new Cart();
 		}
 
-		Map<String, ArticleCart> cartArt = cart.getArticoli();
-		ArticleCart articleCart = cartArt.get(codArt); // Prelevo l'articolo corrispondente al codice passato se
-														// presente
-		if (articleCart == null) {
-			Article article = artRepo.findById(codArt).get(); // Altrimenti lo aggiungo adesso
-			articleCart = new ArticleCart(article);
+		Map<String, ArticleCartDTO> cartArt = cart.getArticoli();
+		ArticleCartDTO articleCartDTO = cartArt.get(codArt); // Prelevo l'articolo corrispondente al codice passato se
+		// presente
+		if (articleCartDTO == null) {
+			articleCartDTO = cartService.findById(codArt); // Altrimenti lo aggiungo adesso
+
 		}
-		articleCart.setQuantita(articleCart.getQuantita() + 1); // Aumento la quantità di 1
-		cartArt.put(codArt, articleCart); // aggiungo l'articolo al carrello
+
+		articleCartDTO.setQuantita(articleCartDTO.getQuantita() + 1); // Aumento la quantità di 1
+		cartArt.put(codArt, articleCartDTO); // aggiungo l'articolo al carrello
 		carts.getCarrelli().put(cartKey, cart); // aggiorno mappa dei carrelli
 
 		return cartKey;

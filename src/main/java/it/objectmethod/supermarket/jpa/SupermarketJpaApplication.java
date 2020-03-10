@@ -1,4 +1,3 @@
-  
 package it.objectmethod.supermarket.jpa;
 
 import org.springframework.boot.SpringApplication;

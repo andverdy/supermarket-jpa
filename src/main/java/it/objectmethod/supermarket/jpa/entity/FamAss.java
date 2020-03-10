@@ -10,7 +10,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "famassort")
@@ -24,7 +23,6 @@ public class FamAss {
 	@Column(name = "DESCRIZIONE")
 	private String descrizione;
 
-	@JsonIgnore
 	@JoinColumn(name = "IDFAMASS")
 	@OneToMany
 	private List<Article> articles;

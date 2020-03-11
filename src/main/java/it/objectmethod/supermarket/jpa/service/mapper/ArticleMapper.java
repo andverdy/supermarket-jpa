@@ -9,8 +9,10 @@ import it.objectmethod.supermarket.jpa.service.dto.ArticleDTO;
 @Mapper(componentModel = "spring", uses = { FamAssMapper.class, IvaMapper.class })
 public interface ArticleMapper extends EntityMapper<ArticleDTO, Article> {
 
+	@Mapping(source = "iva.descrizione", target = "ivaDesc")
+	@Mapping(source = "famAss.descrizione", target = "famAssDesc")
 	@Mapping(source = "iva.idIva", target = "idIva")
 	@Mapping(source = "famAss.id", target = "idFamAss")
-	ArticleDTO toDto(Article article);
+	ArticleDTO toDto(Article a);
 
 }

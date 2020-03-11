@@ -3,6 +3,7 @@ package it.objectmethod.supermarket.jpa.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,16 +11,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import it.objectmethod.supermarket.jpa.entity.Article;
+import it.objectmethod.supermarket.jpa.repository.ArticleRepository;
 import it.objectmethod.supermarket.jpa.service.ArticleService;
 import it.objectmethod.supermarket.jpa.service.dto.ArticleDTO;
 
 @RestController
-@RequestMapping("/api/article")
+@CrossOrigin
+@RequestMapping("/api/articles")
 public class ArticleController {
 
 	@Autowired
 	ArticleService articleService;
+
+	@Autowired
+	ArticleRepository artRepo;
 
 	@GetMapping("/list")
 	public List<ArticleDTO> getArticles() {
@@ -40,14 +45,9 @@ public class ArticleController {
 	}
 
 	@PutMapping("/save")
-	public ArticleDTO articleSave(@RequestBody Article art) {
-		ArticleDTO articleDTO = null;
+	public ArticleDTO articleSave(@RequestBody ArticleDTO artDTO) {
 
-		if (articleService.findById(art.getCodArt()) != null) {
-
-			articleDTO = articleService.save(art);
-
-		}
+		ArticleDTO articleDTO = articleService.save(artDTO);
 
 		return articleDTO;
 	}

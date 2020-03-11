@@ -69,4 +69,11 @@ public class Article {
 		this.iva = iva;
 	}
 
+	@Override
+	public String toString() {
+		return "Article [codArt=" + codArt + ", descrizione=" + descrizione + ", pzCart=" + pzCart + ", famAss="
+				+ famAss + ", iva=" + iva + "]";
+	}
+	
+
 }

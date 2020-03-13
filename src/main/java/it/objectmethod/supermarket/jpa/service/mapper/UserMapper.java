@@ -9,6 +9,6 @@ import it.objectmethod.supermarket.jpa.service.dto.UserDTO;
 public interface UserMapper extends EntityMapper<UserDTO, User> {
 
 	User toEntity(UserDTO userDto);
-	
+
 	UserDTO toDto(User user);
 }

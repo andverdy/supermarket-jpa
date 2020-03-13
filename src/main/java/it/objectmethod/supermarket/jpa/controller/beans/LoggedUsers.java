@@ -13,7 +13,7 @@ public class LoggedUsers {
 	private Map<Long, UserDTO> mapLoggedUsers;
 
 	public Map<Long, UserDTO> getMapLoggedUsers() {
-		if(this.mapLoggedUsers == null) {
+		if (this.mapLoggedUsers == null) {
 			this.mapLoggedUsers = new HashMap<Long, UserDTO>();
 		}
 		return mapLoggedUsers;

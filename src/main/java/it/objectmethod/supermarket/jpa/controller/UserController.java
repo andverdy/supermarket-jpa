@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import it.objectmethod.supermarket.jpa.controller.beans.LoggedUsers;
 import it.objectmethod.supermarket.jpa.repository.UserRepository;
 import it.objectmethod.supermarket.jpa.service.UserService;
 import it.objectmethod.supermarket.jpa.service.dto.UserDTO;
@@ -24,6 +25,9 @@ public class UserController {
 
 	@Autowired
 	UserRepository userRepo;
+	
+	@Autowired
+	LoggedUsers loggedUsers;
 
 	@PutMapping("/save")
 	public UserDTO userInsert(@RequestBody UserDTO userDto) {

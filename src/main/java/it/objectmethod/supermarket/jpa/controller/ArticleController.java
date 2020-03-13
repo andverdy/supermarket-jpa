@@ -29,7 +29,6 @@ public class ArticleController {
 	@GetMapping("/list")
 	public List<ArticleDTO> getArticles() {
 		List<ArticleDTO> articles = articleService.findAll();
-
 		return articles;
 	}
 
@@ -51,5 +50,17 @@ public class ArticleController {
 
 		return articleDTO;
 	}
+
+//	@GetMapping("/login")
+//	public Long login() {
+//		System.out.println("effettuo login");
+//		return 1L;
+//	}
+//
+//	@GetMapping("/hello")
+//	public Long hello() {
+//		System.out.println("effettuo login");
+//		return 1L;
+//	}
 
 }
